@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 79 70 229;
+    --color-primary-light: 99 102 241;
+    --color-secondary: 45 212 191;
+    --color-accent: 249 115 22;
+    --color-background: 249 250 251;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 font-roboto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-inter font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 transition-shadow duration-200 hover:shadow-md;
+  }
+
+  .input {
+    @apply w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500;
+  }
+
+  .table-row {
+    @apply transition-colors duration-200 hover:bg-primary-50 cursor-pointer;
+  }
+
+  .nav-link {
+    @apply relative flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-200;
+  }
+
+  .nav-link-active {
+    @apply bg-primary-100 text-primary-600;
+  }
+
+  .nav-link-inactive {
+    @apply text-gray-600 hover:bg-gray-100;
+  }
+
+  .nav-link::before {
+    content: '';
+    @apply absolute left-0 w-1 h-8 rounded-r-full bg-primary-600 transform scale-y-0 transition-transform duration-200;
+  }
+
+  .nav-link-active::before {
+    @apply scale-y-100;
+  }
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .nav-collapsed {
+    @apply w-16;
+  }
+  
+  .nav-expanded {
+    @apply w-64;
+  }
+}
