@@ -8,7 +8,8 @@ import {
   BiTrendingUp, 
   BiLayer,
   BiDollar,
-  BiMoney 
+  BiMoney,
+  BiStats 
 } from 'react-icons/bi'
 import Card1 from './components/Card1'
 import Card2 from './components/Card2'
@@ -18,13 +19,13 @@ import IndexComparator from './components/IndexComparator'
 import PortfolioMixer from './components/PortfolioMixer'
 import EarningsChecker from './components/EarningsChecker'
 import DividendVisualizer from './components/DividendVisualizer'
+import PegCalculator from './components/PegCalculator'
 
 export default function App() {
   return (
     <div className="flex h-screen bg-gray-100">
       <nav className="w-16 bg-white shadow-lg">
         <div className="flex flex-col items-center py-4 space-y-4">
-          {/* Previous NavLinks */}
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -105,6 +106,16 @@ export default function App() {
           >
             <BiMoney size={24} />
           </NavLink>
+          <NavLink
+            to="/peg"
+            className={({ isActive }) =>
+              `p-2 rounded-lg transition-colors ${
+                isActive ? 'bg-blue-100 text-blue-600' : 'text-gray-600 hover:bg-gray-100'
+              }`
+            }
+          >
+            <BiStats size={24} />
+          </NavLink>
         </div>
       </nav>
 
@@ -119,6 +130,7 @@ export default function App() {
             <Route path="/mixer" element={<PortfolioMixer />} />
             <Route path="/earnings" element={<EarningsChecker />} />
             <Route path="/dividends" element={<DividendVisualizer />} />
+            <Route path="/peg" element={<PegCalculator />} />
           </Routes>
         </div>
       </main>
